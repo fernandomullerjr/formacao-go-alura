@@ -84,4 +84,11 @@ Run 'go help mod init' for more information.
 go: creating new go.mod: module hello-go
 go: to add module requirements and sums:
         go mod tidy
-        
+
+
+- Executando o "go run" ele já compila e executa, sem precisar fazer o build:
+
+> go run hello.go
+Hello, World!
+
+
