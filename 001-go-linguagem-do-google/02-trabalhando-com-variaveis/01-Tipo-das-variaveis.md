@@ -101,3 +101,21 @@ alura@alura-01:~/go/src/hello$ go run hello.go
 ~~~~
 
 Essa é mais uma convenção do Go, temos sempre que utilizar as variáveis que declaramos. Até por que, se não estamos utilizando a variável, não tem motivo dela estar ali.
+
+
+
+
+
+
+> go run 01-variaveis-basico.go
+# command-line-arguments
+./01-variaveis-basico.go:7:6: declared and not used: idade
+
+
+
+
+## RESUMO
+
+- Variáveis declaradas e não utilizadas geram erro.
+
+- Variáveis sem valor definido, o Go deixa elas zeradas.
