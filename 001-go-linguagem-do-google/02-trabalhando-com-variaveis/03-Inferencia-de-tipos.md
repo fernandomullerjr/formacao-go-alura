@@ -149,11 +149,13 @@ Este programa está na versão 1.1
 ## RESUMO
 
 ## INFERENCIAS
+- omitir a declaração explícita do tipo de uma variável (usando var nome = "Douglas" em vez de var nome string = "Douglas") e o Go infere o tipo correto.
 - Ele consegue entender que, se a variável começa e termina com aspas, ela é uma string.
 - Para o Float ele não faz a mesma sugestão pois há dois tipos flutuantes, o float32 e o float64, logo o Go pode inferir qualquer um dos dois tipos à nossa variável. o Go infere o maior tipo flutuante para a variável, o float64.
 
 ## Descobrir o tipo das variáveis
-- Importando o pacote reflect e chamando a sua função TypeOf, passando para ela a variável que queremos saber o tipo
+- Importando o pacote reflect e chamando a sua função TypeOf, passando para ela a variável que queremos saber o tipo.
+    fmt.Println("O tipo da variável idade é", reflect.TypeOf(versao))
 
 ## Declaração curta de variáveis
 - Quando vermos o operador :=, significa que está sendo declarada uma variável, atribuindo o seu valor e inferindo o seu tipo. Além disso, esse operador possui outras vantagens.
