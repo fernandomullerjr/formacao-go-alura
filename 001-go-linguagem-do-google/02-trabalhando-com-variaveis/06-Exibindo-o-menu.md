@@ -155,3 +155,21 @@ Ao executar o programa, caso digitemos um valor não-inteiro, como uma letra, po
 É isso que veremos no próximo capítulo.
 
 
+
+-----------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------
+## Resumo
+
+- A função "scanf" precisa que seja passado o modificador "%d", indicando que é um inteiro que vai ser  recebido e colocado na variável.
+    var comando int
+    fmt.Scanf("%d", &comando)
+
+- Já a função Scan (sem a letra f). Nela, nós não precisamos especificar o modificador que esperamos, ela já consegue inferir o tipo da variável.
+    var comando int
+    fmt.Scan(&comando)
+
+- A função scan é mais inteligente, consegue inferir.
