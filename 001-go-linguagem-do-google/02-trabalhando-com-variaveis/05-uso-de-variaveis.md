@@ -23,3 +23,18 @@ variável peso não é utilizada
 Você acertou em cheio!
 
 Fernando, sua resposta está correta, parabéns! O programa em Go declara a variável peso, mas ela não é utilizada em nenhuma parte do código. Em Go, declarar uma variável e não usá-la resulta em erro de compilação. Continue praticando e aprofundando seus conhecimentos em Go, você está no caminho certo!
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------
+
+## RESUMO
+
+- Problema é:
+variável peso não é utilizada!
+Em Go, declarar uma variável e não usá-la resulta em erro de compilação.
