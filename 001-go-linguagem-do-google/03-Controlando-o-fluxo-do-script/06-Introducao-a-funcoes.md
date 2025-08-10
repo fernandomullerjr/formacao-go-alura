@@ -259,3 +259,11 @@ Utilizamos o pacote os e a função os.Exit() para encerrar o programa, retornan
 
 
 Em resumo, a aula ensina como estruturar um programa Go utilizando funções para torná-lo mais organizado e legível.
+
+
+Nesta aula, o foco é organizar o código Go em funções para evitar centralização na main, promovendo reuso e modularização.
+    Funções: Declaração (ex: exibeIntroducao) e padrão camelCase.
+    Retorno de Valores: Função leComando para ler input do usuário e retornar valor.
+    Organização: Função exibeMenu para exibir opções do menu.
+    Encerrando o Programa: Uso do pacote os e os.Exit() para sair do programa com status (0 para sucesso, -1 para erro).
+
