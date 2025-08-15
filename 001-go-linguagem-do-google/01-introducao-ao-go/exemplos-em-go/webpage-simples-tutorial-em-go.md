@@ -94,3 +94,6 @@ fernando@debian10x64:~$
 usar a porta 80 exige root no Linux. Para rodar localmente, prefira uma porta alta (ex.: 8080) e trate o erro do servidor.
 
 - Webpage usando 8081
+- Comando para subir a página:
+cd ~/cursos/golang/exemplos-em-go
+go run webpage-basica2.go
