@@ -217,3 +217,9 @@ Nesta aula, aprendemos sobre funções que retornam múltiplos valores em Go.Foi
 Além disso, aprendemos a usar o operador de identificador em branco (_) para ignorar um ou mais retornos de uma função quando não precisamos deles, como no caso de ignorar o erro retornado por http.Get.
 
 Por fim, o código da função devolveNomeEIdade foi removido e o código original foi restaurado.
+
+
+- identificador em branco (_) para ignorar um ou mais retornos de uma função quando não precisamos deles, exemplo:
+~~~~go
+resp, _ := http.Get(site)
+~~~~
