@@ -96,3 +96,54 @@ func main() {
 Agora, ao rodar o nosso programa, vemos que após digitar o comando e ter o seu código executado, o menu volta a ser exibido, logo o nosso código está em loop. Para sair do loop, basta que digitemos a opção 0.
 
 Com isso, avançamos mais na nossa aplicação, nos próximos capítulos colocaremos mais sites para o programa monitorar, escrever no log, entre outras funcionalidades! 
+
+
+- Testando:
+
+~~~~bash
+fernando@debian10x64:~/cursos/golang/formacao-go-alura/001-go-linguagem-do-google/04-Fazendo-requisicoes-para-a-web$ go run 07-monitoramento-http-v2.go
+Olá, sr. Douglas
+Este programa está na versão 1.2
+1- Iniciar Monitoramento
+2- Exibir Logs
+0- Sair do Programa
+1
+O comando escolhido foi 1
+Monitorando...
+Site: https://httpbin.org/status/404 está com problemas. Status Code: 404
+1- Iniciar Monitoramento
+2- Exibir Logs
+0- Sair do Programa
+1
+O comando escolhido foi 1
+Monitorando...
+Site: https://httpbin.org/status/404 está com problemas. Status Code: 404
+1- Iniciar Monitoramento
+2- Exibir Logs
+0- Sair do Programa
+2
+O comando escolhido foi 2
+Exibindo Logs...
+1- Iniciar Monitoramento
+2- Exibir Logs
+0- Sair do Programa
+0
+O comando escolhido foi 0
+Saindo do programa
+fernando@debian10x64:~/cursos/golang/formacao-go-alura/001-go-linguagem-do-google/04-Fazendo-requisicoes-para-a-web$ date
+Sat 23 Aug 2025 04:46:32 PM -03
+fernando@debian10x64:~/cursos/golang/formacao-go-alura/001-go-linguagem-do-google/04-Fazendo-requisicoes-para-a-web$
+~~~~
+
+
+
+## RESUMO
+
+Principais pontos abordados:
+
+    Verificação do Status Code:
+        Utilizamos a função http.Get para fazer uma requisição a um site.
+        Verificamos o StatusCode da resposta para determinar se o site está funcionando corretamente. Um código 200 indica sucesso, enquanto outros códigos indicam problemas.
+    Loop Infinito:
+        Implementamos um loop infinito usando for {} para que o programa continue monitorando os sites continuamente.
+        Dentro do loop, o programa exibe um menu com opções para iniciar o monitoramento, exibir logs ou sair do programa.
