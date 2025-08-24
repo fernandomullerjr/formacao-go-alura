@@ -210,6 +210,9 @@ func iniciarMonitoramento() {
 Com isso, podemos seguir com a construção da nossa aplicação, a partir do próximo vídeo.
 
 
+---------------------------------------------------
+---------------------------------------------------
+---------------------------------------------------
 ## RESUMO
 
 Nesta aula, aprendemos sobre funções que retornam múltiplos valores em Go.Foi demonstrado como criar uma função que retorna tanto um nome (string) quanto uma idade (int), e como receber esses valores em variáveis separadas na função main.
