@@ -109,3 +109,12 @@ Funções:
 Diferenças entre Array e Slice: Slices são abstrações de arrays, gerenciando automaticamente o tamanho e a capacidade, permitindo que o desenvolvedor se concentre nos dados.
 
 Em resumo, Slices são uma forma mais flexível e conveniente de trabalhar com coleções de dados em Go, cuidando automaticamente do gerenciamento de memória e tamanho.
+
+
+Conceitos importantes demonstrados:
+
+    Slice vs Array: Slice []string é dinâmico, array [4]string tem tamanho fixo
+    len(): Número atual de elementos
+    cap(): Espaço total alocado na memória
+    append(): Adiciona elementos e gerencia crescimento automático
+    Crescimento da capacidade: Go dobra a capacidade quando necessário para otimizar performance
