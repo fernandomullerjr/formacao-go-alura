@@ -7,10 +7,10 @@ import (
 )
 
 func main() {
-
-	exibeIntroducao()
+	exibeNomes()
+	//exibeIntroducao()
 	for {
-		exibeMenu()
+		//exibeMenu()
 		comando := leComando()
 
 		switch comando {
@@ -77,4 +77,28 @@ func devolveNomeEIdade() (string, int) {
 	nome := "Douglas"
 	idade := 24
 	return nome, idade
+}
+
+func exibeNomes() {
+	// Criando um slice de strings com 3 elementos iniciais
+	// Slice é uma estrutura dinâmica, diferente de array que tem tamanho fixo
+	nomes := []string{"Douglas", "Daniel", "Bernardo"}
+
+	// len() retorna o número atual de elementos no slice
+	fmt.Println("O meu slice tem", len(nomes), "itens")
+
+	// cap() retorna a capacidade atual do slice (espaço alocado na memória)
+	// Inicialmente, capacidade = comprimento = 3
+	fmt.Println("O meu slice tem capacidade para", cap(nomes), "itens")
+
+	// append() adiciona um novo elemento ao slice
+	// Se necessário, Go automaticamente aumenta a capacidade do slice
+	nomes = append(nomes, "Aparecida")
+
+	// Agora temos 4 elementos (len = 4)
+	fmt.Println("O meu slice tem", len(nomes), "itens")
+
+	// A capacidade dobrou automaticamente para 6 (Go otimiza o crescimento)
+	// Isso evita realocações frequentes de memória
+	fmt.Println("O meu slice tem capacidade para", cap(nomes), "itens")
 }

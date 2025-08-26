@@ -78,21 +78,34 @@ Logo, o slice nada mais é do que o Go cuidando do array para nós, pois eles n�
 
 
 
+- Testando
+
+> go run 04-slices-exemplo.go
+O meu slice tem 3 itens
+O meu slice tem capacidade para 3 itens
+O meu slice tem 4 itens
+O meu slice tem capacidade para 6 itens
+1
+O comando escolhido foi 1
+[https://random-status-code.herokuapp.com/ https://www.alura.com.br https://www.caelum.com.br ]
+Monitorando...
+Site: https://httpbin.org/status/404 está com problemas. Status Code: 404
+0
+O comando escolhido foi 0
+Saindo do programa
+> date
+Tue Aug 26 17:24:49 -03 2025
+
+
+
 ## RESUMO
 Olá! Tudo bem?Nesta aula, aprendemos sobre Slices em Go, que são abstrações de arrays com tamanho dinâmico.Principais pontos:
 Criação: Slices são criados de forma similar a arrays, mas com tamanho dinâmico, inferido pela quantidade de elementos.
 Funções:
-len(): Retorna a quantidade de itens no slice.
-cap(): Retorna a capacidade do slice (tamanho do array subjacente).
-append(): Adiciona um novo item ao slice, aumentando sua capacidade se necessário (geralmente dobra a capacidade).
-
+    len(): Retorna a quantidade de itens no slice.
+    cap(): Retorna a capacidade do slice (tamanho do array subjacente).
+    append(): Adiciona um novo item ao slice, aumentando sua capacidade se necessário (geralmente dobra a capacidade).
 
 Diferenças entre Array e Slice: Slices são abstrações de arrays, gerenciando automaticamente o tamanho e a capacidade, permitindo que o desenvolvedor se concentre nos dados.
 
 Em resumo, Slices são uma forma mais flexível e conveniente de trabalhar com coleções de dados em Go, cuidando automaticamente do gerenciamento de memória e tamanho.
-
-
-
-## pendente
-- Ajustar o código
-- Testar
