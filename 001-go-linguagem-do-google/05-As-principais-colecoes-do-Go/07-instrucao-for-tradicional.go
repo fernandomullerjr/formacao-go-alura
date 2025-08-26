@@ -51,26 +51,40 @@ func leComando() int {
 }
 
 func iniciarMonitoramento() {
-    fmt.Println("Monitorando...")
+	fmt.Println("Monitorando...")
 
-    sites := []string{
-        "https://random-status-code.herokuapp.com/", 
-        "https://www.alura.com.br", 
-        "https://www.caelum.com.br",
-    }
+	// Criando um slice de strings com URLs dos sites a serem monitorados
+	// Slice permite adicionar/remover sites dinamicamente se necessário
+	sites := []string{
+		"https://random-status-code.herokuapp.com/",
+		"https://www.alura.com.br",
+		"https://www.caelum.com.br",
+	}
 
-    for i := 0; i < len(sites); i++ {
-        fmt.Println(sites[i])
-    }
+	// FOR TRADICIONAL: Percorre o slice usando índice
+	// i = 0: primeira posição do slice
+	// i < len(sites): condição para não ultrapassar o tamanho do slice
+	// i++: incrementa o índice a cada iteração
+	for i := 0; i < len(sites); i++ {
+		// Acessa o elemento na posição i do slice
+		fmt.Println(sites[i])
+	}
 
-    site := "https://www.alura.com.br"
-    resp, _ := http.Get(site)
+	// CÓDIGO LEGADO: Verifica apenas um site específico (será refatorado)
+	// TODO: Mover esta lógica para dentro do loop para monitorar todos os sites
+	site := "https://www.alura.com.br"
 
-    if resp.StatusCode == 200 {
-        fmt.Println("Site:", site, "foi carregado com sucesso!")
-    } else {
-        fmt.Println("Site:", site, "está com problemas. Status Code:", resp.StatusCode)
-    }
+	// http.Get() faz uma requisição HTTP GET para o site
+	// O segundo valor de retorno (erro) está sendo ignorado com "_"
+	resp, _ := http.Get(site)
+
+	// Verifica o código de status HTTP da resposta
+	// 200 = OK (sucesso), outros códigos indicam problemas
+	if resp.StatusCode == 200 {
+		fmt.Println("Site:", site, "foi carregado com sucesso!")
+	} else {
+		fmt.Println("Site:", site, "está com problemas. Status Code:", resp.StatusCode)
+	}
 }
 
 func devolveNomeEIdade() (string, int) {

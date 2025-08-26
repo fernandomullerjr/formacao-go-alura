@@ -54,20 +54,37 @@ func leComando() int {
 func iniciarMonitoramento() {
     fmt.Println("Monitorando...")
 
+    // Criando um slice de strings com URLs dos sites a serem monitorados
+    // Slice permite adicionar/remover sites dinamicamente se necessário
     sites := []string{
         "https://random-status-code.herokuapp.com/", 
         "https://www.alura.com.br", 
         "https://www.caelum.com.br",
     }
 
+    // FOR COM RANGE: Forma idiomática de iterar em Go
+    // range retorna dois valores: índice (i) e valor (site)
+    // É mais seguro que o for tradicional (não há risco de index out of bounds)
+    // É mais legível e conciso que usar len() e incremento manual
     for i, site := range sites {
+        // i = posição/índice atual no slice (0, 1, 2...)
+        // site = valor do elemento na posição atual
         fmt.Println("Estou passando na posição", i,
             "do meu slice e essa posição tem o site", site)
     }
 
+    // CÓDIGO LEGADO: Verifica apenas um site específico (será refatorado)
+    // TODO: Mover esta lógica para dentro do loop range para monitorar todos os sites
     site := "https://www.alura.com.br"
+    
+    // http.Get() faz uma requisição HTTP GET para o site
+    // O segundo valor de retorno (erro) está sendo ignorado com "_"
+    // IMPORTANTE: Em produção, sempre tratar erros adequadamente
     resp, _ := http.Get(site)
 
+    // Verifica o código de status HTTP da resposta
+    // 200 = OK (sucesso), outros códigos indicam problemas
+    // Status codes comuns: 404 (Not Found), 500 (Server Error), etc.
     if resp.StatusCode == 200 {
         fmt.Println("Site:", site, "foi carregado com sucesso!")
     } else {
