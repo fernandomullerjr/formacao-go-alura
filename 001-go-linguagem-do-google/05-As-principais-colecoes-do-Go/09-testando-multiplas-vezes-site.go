@@ -100,11 +100,28 @@ func iniciarMonitoramento() {
 	fmt.Println("")
 }
 
+// func testaSite(site string) {
+
+// 	resp, _ := http.Get(site)
+
+// 	if resp.StatusCode == 200 {
+// 		fmt.Println("Site:", site, "foi carregado com sucesso!")
+// 	} else {
+// 		fmt.Println("Site:", site, "está com problemas. Status Code:", resp.StatusCode)
+// 	}
+// }
+
 func testaSite(site string) {
+	client := &http.Client{Timeout: 5 * time.Second}
 
-	resp, _ := http.Get(site)
+	resp, err := client.Get(site)
+	if err != nil {
+		fmt.Println("Erro ao acessar:", site, "-", err)
+		return
+	}
+	defer resp.Body.Close()
 
-	if resp.StatusCode == 200 {
+	if resp.StatusCode == http.StatusOK {
 		fmt.Println("Site:", site, "foi carregado com sucesso!")
 	} else {
 		fmt.Println("Site:", site, "está com problemas. Status Code:", resp.StatusCode)

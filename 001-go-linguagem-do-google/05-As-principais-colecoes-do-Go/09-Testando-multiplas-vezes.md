@@ -212,3 +212,119 @@ Wed Aug 27 19:11:41 -03 2025
 
 
 deu erro
+
+
+
+O panic aconteceu porque você ignorou o erro do `http.Get`. Quando dá erro de rede/DNS/TLS, o `resp` vem **nil** e ao acessar `resp.StatusCode` você desreferencia `nil` → `invalid memory address`.
+
+Troca sua função por algo seguro (com timeout e `defer Close()`):
+
+```go
+func testaSite(site string) {
+    client := &http.Client{Timeout: 5 * time.Second}
+
+    resp, err := client.Get(site)
+    if err != nil {
+        fmt.Println("Erro ao acessar:", site, "-", err)
+        return
+    }
+    defer resp.Body.Close()
+
+    if resp.StatusCode == http.StatusOK {
+        fmt.Println("Site:", site, "foi carregado com sucesso!")
+    } else {
+        fmt.Println("Site:", site, "está com problemas. Status Code:", resp.StatusCode)
+    }
+}
+```
+
+Dicas rápidas:
+
+* O primeiro URL `https://random-status-code.herokuapp.com/` pode estar **fora do ar**; use endpoints previsíveis para testar, ex.:
+
+  * `https://httpstat.us/200` (OK)
+  * `https://httpstat.us/500` (erro)
+  * `https://example.com` (OK)
+* Fecha sempre o `resp.Body` com `defer` pra não vazar recurso.
+* Se quiser ser ainda mais leve, pode tentar `HEAD` (nem todo servidor suporta):
+
+  ```go
+  req, _ := http.NewRequest(http.MethodHead, site, nil)
+  resp, err := client.Do(req)
+  ```
+* No seu log aparecem prints do `exibeNomes()` antes do menu, mas no código enviado ele está comentado. Confere se você está rodando o arquivo certo (`09-testando-multiplas-vezes-site.go`) e se lá o `exibeNomes()` não ficou ativo.
+
+Com isso, em vez de crashar, o programa só vai **logar o erro** e seguir pros demais sites.
+
+
+
+- Testando com o código abaixo:
+
+~~~~go
+
+func testaSite(site string) {
+	client := &http.Client{Timeout: 5 * time.Second}
+
+	resp, err := client.Get(site)
+	if err != nil {
+		fmt.Println("Erro ao acessar:", site, "-", err)
+		return
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode == http.StatusOK {
+		fmt.Println("Site:", site, "foi carregado com sucesso!")
+	} else {
+		fmt.Println("Site:", site, "está com problemas. Status Code:", resp.StatusCode)
+	}
+}
+
+~~~~
+
+
+- ERROS
+
+~~~~BASH
+
+> go run 09-testando-multiplas-vezes-site.go
+1- Iniciar Monitoramento
+2- Exibir Logs
+0- Sair do Programa
+1
+O comando escolhido foi 1
+Monitorando...
+Testando site 0 : https://random-status-code.herokuapp.com/
+Erro ao acessar: https://random-status-code.herokuapp.com/ - Get "https://random-status-code.herokuapp.com/": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+Testando site 1 : https://www.alura.com.br
+Erro ao acessar: https://www.alura.com.br - Get "https://www.alura.com.br": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+Testando site 2 : https://www.caelum.com.br
+Erro ao acessar: https://www.caelum.com.br - Get "https://www.caelum.com.br": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+
+Testando site 0 : https://random-status-code.herokuapp.com/
+Erro ao acessar: https://random-status-code.herokuapp.com/ - Get "https://random-status-code.herokuapp.com/": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+Testando site 1 : https://www.alura.com.br
+Erro ao acessar: https://www.alura.com.br - Get "https://www.alura.com.br": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+Testando site 2 : https://www.caelum.com.br
+Erro ao acessar: https://www.caelum.com.br - Get "https://www.caelum.com.br": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+
+Testando site 0 : https://random-status-code.herokuapp.com/
+Erro ao acessar: https://random-status-code.herokuapp.com/ - Get "https://random-status-code.herokuapp.com/": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+Testando site 1 : https://www.alura.com.br
+Erro ao acessar: https://www.alura.com.br - Get "https://www.alura.com.br": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+Testando site 2 : https://www.caelum.com.br
+Erro ao acessar: https://www.caelum.com.br - Get "https://www.caelum.com.br": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+
+~~~~
+
+
+- Problema no DNS local
+
+~~~~bash
+
+> curl alura.com.br
+curl: (6) Could not resolve host: alura.com.br
+> ping google.com
+PING google.com(2800:3f0:4001:83a::200e (2800:3f0:4001:83a::200e)) 56 data bytes
+
+
+~~~~
