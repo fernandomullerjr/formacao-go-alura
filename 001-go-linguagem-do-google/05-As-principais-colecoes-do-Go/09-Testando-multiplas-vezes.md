@@ -180,6 +180,15 @@ Com isso, conseguimos monitorar mais de uma vez múltiplos sites.
 
 
 
+
+
+
+
+
+
+
+## Testando
+
 - Testando:
 
 ~~~~bash
@@ -328,3 +337,44 @@ PING google.com(2800:3f0:4001:83a::200e (2800:3f0:4001:83a::200e)) 56 data bytes
 
 
 ~~~~
+
+
+
+## Dia 18/09/2025
+
+- Resolvido problema no DNS local.
+
+- Testando novamente:
+
+> go run 09-testando-multiplas-vezes-site.go
+1- Iniciar Monitoramento
+2- Exibir Logs
+0- Sair do Programa
+1
+O comando escolhido foi 1
+Monitorando...
+Testando site 0 : https://random-status-code.herokuapp.com/
+Site: https://random-status-code.herokuapp.com/ está com problemas. Status Code: 404
+Testando site 1 : https://www.alura.com.br
+Site: https://www.alura.com.br foi carregado com sucesso!
+Testando site 2 : https://www.caelum.com.br
+Erro ao acessar: https://www.caelum.com.br - Get "https://www.caelum.com.br": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+
+Testando site 0 : https://random-status-code.herokuapp.com/
+Site: https://random-status-code.herokuapp.com/ está com problemas. Status Code: 404
+Testando site 1 : https://www.alura.com.br
+Site: https://www.alura.com.br foi carregado com sucesso!
+Testando site 2 : https://www.caelum.com.br
+Erro ao acessar: https://www.caelum.com.br - Get "https://www.caelum.com.br": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+
+Testando site 0 : https://random-status-code.herokuapp.com/
+Site: https://random-status-code.herokuapp.com/ está com problemas. Status Code: 404
+Testando site 1 : https://www.alura.com.br
+Site: https://www.alura.com.br foi carregado com sucesso!
+Testando site 2 : https://www.caelum.com.br
+Erro ao acessar: https://www.caelum.com.br - Get "https://www.caelum.com.br": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+
+
+1- Iniciar Monitoramento
+2- Exibir Logs
+0- Sair do Programa
