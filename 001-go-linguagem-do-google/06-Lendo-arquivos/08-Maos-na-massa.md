@@ -190,3 +190,20 @@ func iniciarMonitoramento() {
 
 Faça o teste, adicione novos sites ao arquivos `sites.txt` e verifique se os sites estão sendo lidos e testados corretamente.
  
+
+
+
+- Criado o arquivo
+formacao-go-alura/001-go-linguagem-do-google/06-Lendo-arquivos/08-maos-na-massa.go
+
+- Ajustando ele
+
+Resumo dos comentários adicionados:
+
+var sites []string: Explica que é um slice vazio para armazenar os sites lidos
+
+defer arquivo.Close(): Explica detalhadamente:
+    Que o defer agenda a execução para o final da função
+    Que funciona independentemente de como a função termine
+    Que previne vazamento de recursos
+    Que libera o handle do arquivo para o sistema operacional

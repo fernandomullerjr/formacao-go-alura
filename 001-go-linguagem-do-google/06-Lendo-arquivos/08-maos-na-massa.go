@@ -92,6 +92,8 @@ func testaSite(site string) {
 }
 
 func leSitesDoArquivo() []string {
+	// Declara um slice vazio de strings para armazenar todos os sites
+	// que serão lidos do arquivo sites.txt
 	var sites []string
 
 	arquivo, err := os.Open("sites.txt")
@@ -101,6 +103,11 @@ func leSitesDoArquivo() []string {
 		return sites
 	}
 
+	// defer arquivo.Close() agenda o fechamento do arquivo para ser executado
+	// automaticamente quando a função terminar, independentemente de como ela termine
+	// (return normal, panic, ou qualquer outro tipo de saída da função).
+	// Isso garante que o arquivo seja sempre fechado, evitando vazamento de recursos
+	// e liberando o handle do arquivo para o sistema operacional.
 	defer arquivo.Close()
 
 	leitor := bufio.NewReader(arquivo)
