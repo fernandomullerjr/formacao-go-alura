@@ -10,3 +10,18 @@ https://www.github.com - online: true
 https://www.alura.com.br - online: true
 https://www.stackoverflow.com - online: false
 https://www.golang.org - online: true
+04/10/2025 23:31:13 - teste-site-falso - online: false
+04/10/2025 23:31:16 - https://www.google.com - online: true
+04/10/2025 23:31:16 - https://www.github.com - online: true
+04/10/2025 23:31:17 - https://www.alura.com.br - online: true
+04/10/2025 23:31:17 - https://www.stackoverflow.com - online: false
+04/10/2025 23:31:19 - https://www.golang.org - online: true
+04/10/2025 23:31:24 - https://www.google.com - online: true
+04/10/2025 23:31:24 - https://www.github.com - online: true
+04/10/2025 23:31:24 - https://www.alura.com.br - online: true
+04/10/2025 23:31:24 - https://www.stackoverflow.com - online: false
+04/10/2025 23:31:25 - https://www.golang.org - online: true
+04/10/2025 23:36:13 - https://www.google.com - online: true
+04/10/2025 23:36:13 - https://www.github.com - online: true
+04/10/2025 23:36:14 - https://www.alura.com.br - online: true
+04/10/2025 23:36:14 - https://www.stackoverflow.com - online: false
