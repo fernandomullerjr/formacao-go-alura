@@ -103,6 +103,9 @@ Primeiro, a função registraLog é criada para receber o site e seu status como
 Para criar o arquivo de log, a função OpenFile do pacote os é utilizada, especificando o nome do arquivo, as flags O_CREATE e O_RDWR para criar o arquivo se não existir e permitir leitura e escrita, e a permissão 0666.
     arquivo, err := os.OpenFile("log.txt", os.O_CREATE|os.O_RDWR, 0666)
 
+Material do Go contendo os parametros/flags:
+<https://pkg.go.dev/os#OpenFile>
+
 No final da aula, o arquivo é criado, mas ainda falta aprender como escrever nele, o que será abordado no próximo vídeo.
 
 

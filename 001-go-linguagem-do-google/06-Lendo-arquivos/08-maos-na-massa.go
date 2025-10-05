@@ -110,6 +110,10 @@ func leSitesDoArquivo() []string {
 	// e liberando o handle do arquivo para o sistema operacional.
 	defer arquivo.Close()
 
+	// Cria um leitor bufferizado (com buffer) para ler o arquivo de forma eficiente.
+	// O bufio.NewReader() permite ler o arquivo linha por linha sem carregar
+	// todo o conteúdo na memória de uma vez, o que é útil para arquivos grandes.
+	// Ele fornece métodos como ReadString() para leitura linha a linha.
 	leitor := bufio.NewReader(arquivo)
 	for {
 		linha, err := leitor.ReadString('\n')
