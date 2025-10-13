@@ -20,7 +20,7 @@ Devemos identificar que todos esses campos se tratam da struct, por isso vamos e
 ````go
 type ContaCorrente struct {
     var titular       string
-     var numeroAgencia int
+    var numeroAgencia int
     var numeroConta   int
     var saldo         float64
 }
@@ -54,3 +54,63 @@ Apesar de não termos inserido nenhum valor, os elementos ganham automaticamente
 Porém, não é o que queríamos. A primeira conta corrente não deve ser uma string vazia e três zeros. Ela deve ter exatamente as informações referentes ao Guilherme.
 
 Faremos essas atribuições no próximo vídeo.
+
+- Ajustando o código:
+acrescentando o import do fmt para imprimir
+
+````go
+package main
+
+import (
+    "fmt"
+)
+
+type ContaCorrente struct {
+	titular       string
+	numeroAgencia int
+	numeroConta   int
+	saldo         float64
+}
+
+func main() {
+	fmt.Println(ContaCorrente{})
+}
+````
+
+- Testando:
+
+````bash
+fernando@debian10x64:~/cursos/golang/formacao-go-alura/002-Go-orientacao-a-objetos/01-Minha-primeira-Struct$ go run 003-strucsts-exemplo-simples.go
+{ 0 0 0}
+fernando@debian10x64:~/cursos/golang/formacao-go-alura/002-Go-orientacao-a-objetos/01-Minha-primeira-Struct$
+````
+
+Ele exibirá uns números estranhos: { 0 0 0}. Não passamos nenhuma informação e mesmo assim foram impressos esses valores.
+
+Apesar de não termos inserido nenhum valor, os elementos ganham automaticamente um valor inicial. Esse valor é chamado de zero value ou inicialização zero. Então, pro que for string, será adicionado um vazio. Para o que for um inteiro ou do tipo float, será atribuído um "0".
+
+## Resumo
+
+Nesta aula, aprendemos como criar uma struct em Go para estruturar os campos de uma conta corrente, como titular, número da agência, número da conta e saldo.Ao criar uma struct chamada ContaCorrente, podemos reutilizar essa estrutura para diferentes contas, como as de Guilherme e Luciene. Para definir a struct, usamos a palavra-chave type seguida do nome da struct e da palavra-chave struct, envolvendo os campos entre chaves e especificando seus tipos.Ao imprimir uma struct sem atribuir valores, o Go atribui automaticamente um valor inicial para cada campo, conhecido como "zero value". No caso de strings, o valor inicial é uma string vazia, enquanto para inteiros e floats, o valor inicial é 0.No próximo vídeo, aprenderemos como atribuir valores específicos aos campos da struct para representar as informações de cada conta corrente corretamente.
+
+- Não é necessário informar a palavra "var" ao formar a estrutura da Struct.
+
+- Estrutura de exemplo:
+
+````go
+type ContaCorrente struct {
+    titular       string
+    numeroAgencia int
+    numeroConta   int
+    saldo         float64
+}
+````
+
+- Para imprimir uma Struct:
+Para deixar claro que se trata de uma estrutura, vamos abrir e fechar chaves na sequência. Se passarmos o mouse sobre ContaCorrente{} será mostrada a estrutura que criamos desse tipo.
+
+````go
+func main() {
+    fmt.Println(ContaCorrente{})
+}
+````
