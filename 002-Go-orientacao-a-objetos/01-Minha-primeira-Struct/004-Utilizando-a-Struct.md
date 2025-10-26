@@ -77,3 +77,53 @@ Vamos rodar e aparecerá no terminal o nome do Titular, Guilherme, no Número da
 Temos essas duas opções de utilização da nossa estrutura. Do outro modo, teríamos 8 variáveis referentes aos campos do Guilherme e da Bruna. Dessa forma, com poucas linhas de código conseguimos um resultado mais elegante usando a linguagem Go.
 
 O código ficará disponível na última atividade da aula atual, em O que aprendemos? para a utilização.
+
+- Código completo:
+
+~~~~go
+package main
+
+import (
+	"fmt"
+)
+
+type ContaCorrente struct {
+	titular       string
+	numeroAgencia int
+	numeroConta   int
+	saldo         float64
+}
+
+func main() {
+	contaDoGuilherme := ContaCorrente{titular: "Guilherme",
+		numeroAgencia: 589, numeroConta: 123456, saldo: 125.5}
+
+	contaDaBruna := ContaCorrente{"Bruna", 222, 111222, 200}
+
+	fmt.Println(contaDoGuilherme)
+	fmt.Println(contaDaBruna)
+}
+~~~~
+
+## RESUMO
+
+Nesta aula, aprendemos como utilizar structs em Go para agrupar diferentes tipos de dados em uma única estrutura.
+Vimos que, ao criar uma struct, podemos definir seus campos e seus respectivos tipos. Ao instanciar uma struct, podemos fornecer valores para esses campos de duas maneiras:
+Nomeando os campos: Especificamos o nome de cada campo seguido por seu valor. Essa forma é útil quando não queremos fornecer valores para todos os campos ou quando queremos especificar apenas alguns campos.
+Sem nomear os campos: Fornecemos os valores na ordem em que os campos foram definidos na struct. Essa forma é mais concisa, mas exige que forneçamos valores para todos os campos.
+
+Além disso, vimos que, quando não fornecemos um valor para um campo, o Go atribui um valor padrão para esse campo, dependendo de seu tipo.
+
+Em resumo, as structs nos permitem organizar e manipular dados de forma mais eficiente em Go, agrupando informações relacionadas em uma única estrutura.
+
+## 📋 **RESUMO SIMPLES**
+
+**Structs** em Go permitem agrupar dados relacionados em uma única estrutura. 
+
+**Duas formas de inicializar:**
+- **Com campos nomeados:** `ContaCorrente{titular: "João", saldo: 100.0}`
+- **Por ordem:** `ContaCorrente{"João", 589, 123456, 100.0}`
+
+**Zero values:** Campos não preenchidos recebem valores padrão (`""` para string, `0` para int/float).
+
+**Vantagem:** Organiza múltiplas variáveis relacionadas em uma única estrutura, tornando o código mais limpo e legível.

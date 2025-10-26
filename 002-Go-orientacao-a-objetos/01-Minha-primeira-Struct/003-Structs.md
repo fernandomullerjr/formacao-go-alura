@@ -91,7 +91,11 @@ Apesar de não termos inserido nenhum valor, os elementos ganham automaticamente
 
 ## Resumo
 
-Nesta aula, aprendemos como criar uma struct em Go para estruturar os campos de uma conta corrente, como titular, número da agência, número da conta e saldo.Ao criar uma struct chamada ContaCorrente, podemos reutilizar essa estrutura para diferentes contas, como as de Guilherme e Luciene. Para definir a struct, usamos a palavra-chave type seguida do nome da struct e da palavra-chave struct, envolvendo os campos entre chaves e especificando seus tipos.Ao imprimir uma struct sem atribuir valores, o Go atribui automaticamente um valor inicial para cada campo, conhecido como "zero value". No caso de strings, o valor inicial é uma string vazia, enquanto para inteiros e floats, o valor inicial é 0.No próximo vídeo, aprenderemos como atribuir valores específicos aos campos da struct para representar as informações de cada conta corrente corretamente.
+Nesta aula, aprendemos como criar uma struct em Go para estruturar os campos de uma conta corrente, como titular, número da agência, número da conta e saldo.
+Ao criar uma struct chamada ContaCorrente, podemos reutilizar essa estrutura para diferentes contas, como as de Guilherme e Luciene. Para definir a struct, usamos a palavra-chave type seguida do nome da struct e da palavra-chave struct, envolvendo os campos entre chaves e especificando seus tipos.
+Ao imprimir uma struct sem atribuir valores, o Go atribui automaticamente um valor inicial para cada campo, conhecido como "zero value". 
+No caso de strings, o valor inicial é uma string vazia, enquanto para inteiros e floats, o valor inicial é 0.
+No próximo vídeo, aprenderemos como atribuir valores específicos aos campos da struct para representar as informações de cada conta corrente corretamente.
 
 - Não é necessário informar a palavra "var" ao formar a estrutura da Struct.
 

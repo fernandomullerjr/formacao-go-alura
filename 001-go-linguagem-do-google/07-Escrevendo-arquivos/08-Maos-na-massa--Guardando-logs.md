@@ -247,7 +247,7 @@ func leSitesDoArquivo() []string {
     return sites
 }
 
-func imprimeLogs() {
+func imprimeLogs()  {
 
     arquivo, err := ioutil.ReadFile("log.txt")
 
