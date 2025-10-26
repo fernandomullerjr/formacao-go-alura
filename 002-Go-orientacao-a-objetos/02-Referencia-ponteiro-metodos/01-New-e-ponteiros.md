@@ -72,6 +72,17 @@ Mas o terceiro modo também é importante sabermos usar, pois se precisar lidar 
 
 Essa foi uma aula para termos ideia de que existe essa alternativa e como utilizá-la, mas nos próximos momentos trabalharemos sempre com o primeiro ou o segundo jeitos de lidar com structs. `
 
+- Efetuando teste:
+
+~~~~bash
+> go run 01-ponteiros.go
+{Guilherme 589 123456 125.5}
+{Bruna 222 111222 200}
+{Cris 0 0 500}
+> date
+Sat Oct 25 22:48:21 -03 2025
+~~~~
+
 ## RESUMO
 
 Nesta aula, o instrutor aborda uma terceira forma de utilizar structs em Go, similar a linguagens como Java e C#, utilizando a palavra-chave new e ponteiros.

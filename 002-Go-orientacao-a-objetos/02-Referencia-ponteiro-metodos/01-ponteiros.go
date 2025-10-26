@@ -1,4 +1,3 @@
-package referenciaponteirometodos
 package main
 
 import (
@@ -25,7 +24,6 @@ func main() {
 	contaDaCris = new(ContaCorrente)
 	contaDaCris.titular = "Cris"
 	contaDaCris.saldo = 500
-
 
 	fmt.Println(*contaDaCris)
 }
