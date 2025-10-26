@@ -109,3 +109,101 @@ Só que quando comparamos os conteúdos de ambos os endereços, eles serão igua
 Os ponteiros são muito utilizados em linguagens como C e C++ e trabalhar com eles é um grande desafio. O maior benefício de sabermos a diferença entre endereços que alocam informações na memória estará no autodesempenho, ou seja as pessoas que que usam C e C++ conseguem ter um alto desempenho dessa forma, com boa velocidade.
 
 Felizmente no Go vimos que a linguagem tem a capacidade de comparar o conteúdo armazenado em dois endereços independentemente da diferença entre eles.
+
+- tem 8 arquivos separados para testar cada conceito:
+
+exemplo1: Structs com conteúdo igual
+exemplo2: Structs com conteúdo diferente
+exemplo3: Sintaxe curta com valores iguais
+exemplo4: Sintaxe curta com valores diferentes
+exemplo5: Comparação de ponteiros (endereços)
+exemplo6: Comparação de conteúdo de ponteiros
+exemplo7: Visualização de endereços de memória
+exemplo8: Exemplo completo com todos os conceitos
+
+- Testando eles:
+
+> go run 02-testando-struct-conteudo-igual.go
+contaDoGuilherme: {Guilherme 589 123456 125.5}
+contaDoGuilherme2: {Guilherme 589 123456 125.5}
+contaDoGuilherme == contaDoGuilherme2: true
+> date
+Sun Oct 26 15:02:37 -03 2025
+
+>
+> go run 02-testando-struct-conteudo-diferente.go
+contaDoGuilherme: {Guilherme 589 123456 125.5}
+contaDoGuilherme2: {Guilherme 580 123456 125.5}
+contaDoGuilherme == contaDoGuilherme2: false
+>
+> date
+Sun Oct 26 15:03:52 -03 2025
+
+>
+> go run 02-testando-struct-sintaxe-curta-conteudo-igual.go
+contaDaBruna: {Bruna 222 111222 200}
+contaDaBruna2: {Bruna 222 111222 200}
+contaDaBruna == contaDaBruna2: true
+>
+> date
+Sun Oct 26 15:05:10 -03 2025
+
+>
+> go run 02-testando-struct-sintaxe-curta-conteudo-diferente.go
+contaDaBruna: {Bruna 222 111222 200}
+contaDaBruna2: {Bruna 111 111222 200}
+contaDaBruna == contaDaBruna2: false
+> date
+Sun Oct 26 15:06:20 -03 2025
+
+> go run 02b-testando-comparacao-enderecos-de-memoria.go
+contaDaCris: &{Cris 0 0 500}
+contaDaCris2: &{Cris 0 0 500}
+contaDaCris == contaDaCris2 (comparando endereços): false
+> date
+Sun Oct 26 15:08:39 -03 2025
+
+>
+> go run 02c-testando-comparacao-conteudo-dos-ponteiros.go
+contaDaCris: &{Cris 0 0 500}
+contaDaCris2: &{Cris 0 0 500}
+*contaDaCris == *contaDaCris2 (comparando conteúdo): true
+>
+> date
+Sun Oct 26 15:12:01 -03 2025
+
+>
+> go run 02d-testando-visualizando-enderecos-de-memoria.go
+Endereço onde contaDaCris aponta: 0xc0001940f0
+Endereço onde contaDaCris2 aponta: 0xc000194120
+Endereço da variável contaDaCris: 0xc000186038
+Endereço da variável contaDaCris2: 0xc000186040
+
+Comparações:
+contaDaCris == contaDaCris2: false
+*contaDaCris == *contaDaCris2: true
+&contaDaCris == &contaDaCris2: false
+> date
+Sun Oct 26 15:14:08 -03 2025
+
+## RESUMO
+
+Nesta aula, exploramos a comparação de structs em Go, focando em como o Go lida com a comparação de valores e ponteiros.
+
+Comparação de Valores:
+Ao comparar variáveis do tipo ContaCorrente diretamente (contaDoGuilherme == contaDoGuilherme2), o Go compara o conteúdo dos campos das structs. Se todos os campos forem iguais, a comparação retorna true; caso contrário, retorna false.
+
+Comparação de Ponteiros:
+Quando comparamos ponteiros para structs (contaDaCris == contaDaCris2), estamos comparando os endereços de memória para onde esses ponteiros apontam, e não o conteúdo das structs em si. Mesmo que o conteúdo das structs seja idêntico, a comparação dos ponteiros retornará false se eles apontarem para diferentes locais na memória.
+Para comparar o conteúdo das structs apontadas pelos ponteiros, usamos o operador de dereferência * (*contaDaCris == *contaDaCris2). Isso compara os valores das structs nos endereços de memória, retornando true se o conteúdo for igual.
+
+Endereços de Memória:
+A função fmt.Println(&contaDaCris) exibe o endereço de memória onde a struct está armazenada. Cada variável (a não ser que seja um ponteiro para o mesmo endereço) terá um endereço diferente, mesmo que o conteúdo seja o mesmo.
+
+Ponteiros em C e C++:
+Ponteiros são amplamente utilizados em linguagens como C e C++ para otimizar o desempenho, permitindo manipulação direta da memória.
+
+Go simplifica o trabalho com ponteiros ao permitir a comparação direta do conteúdo armazenado em diferentes endereços de memória, sem a necessidade de manipulação manual dos ponteiros.
+
+
+
