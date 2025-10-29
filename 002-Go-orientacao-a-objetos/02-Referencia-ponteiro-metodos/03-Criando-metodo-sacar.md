@@ -155,7 +155,7 @@ podeSacar := valorDoSaque > 0 && valorDoSaque <= c.saldo
 Vamos salvar e executar mais uma vez. Veremos que o saldo era "500", tentando sacar "-100" o saldo será insuficiente e serão mantidos os "500" na conta de Silvia. Não foi possível realizar o saque.
 
 Agora se tentarmos sacar outro valor, como "400", o saque será realizado com sucesso e ainda haverá "100" na conta.
-
+.
 ````go
 type ContaCorrente struct {
     titular       string
@@ -185,3 +185,26 @@ func main() {
     fmt.Println(contaDaSilvia.saldo)
 }
 ````
+
+Este trecho em Go:
+
+```go
+c.saldo -= valorDoSaque
+```
+
+faz uma **subtração e atribuição**. Ele diminui o valor da variável `c.saldo` pelo valor de `valorDoSaque`. É equivalente a:
+
+```go
+c.saldo = c.saldo - valorDoSaque
+```
+
+**Explicação:**
+- `c` provavelmente é uma instância de uma struct (por exemplo, uma conta bancária).
+- `saldo` representa o saldo atual.
+- `valorDoSaque` é o valor que está sendo sacado.
+
+**Resumo:**  
+Após essa linha, o saldo da conta (`c.saldo`) será reduzido pelo valor do saque (`valorDoSaque`). Isso é comum em métodos que processam saques em sistemas bancários.
+
+**Gotcha:**  
+Se não houver validação antes, pode permitir saldo negativo. É importante garantir que o saque só aconteça se houver saldo suficiente.
