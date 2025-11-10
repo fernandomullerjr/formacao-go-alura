@@ -35,7 +35,9 @@ E nossa saída seria:
 Neste link, você pode executar o código acima.
 
 Porém, é possível que uma função receba um número indeterminado de parâmetros. Funções deste tipo são conhecidas em Go como variadic functions, ou função variádica.
-Criando um função variádica
+
+
+## Criando um função variádica
 
 Para criar uma variadic function, devemos preceder o tipo do argumento com reticências, conforme o exemplo abaixo:
 
@@ -65,3 +67,18 @@ func main() {
 Neste link, você pode executar o código acima.
 
 Note o uso das reticências na declaração do parâmetro número: numeros ...int. Portanto, podemos criar uma função sem parâmetro, com um, dois, três, ou uma quantidade indeterminada de parâmetros com Go.
+
+
+- Testando os 2 formatos
+
+> go run 05-parametros-determinados.go
+Exemplo de função sem parâmetro!
+Exemplo de função com um parâmetro
+Passando dois parâmetros: essa string e o número 10
+>
+>
+> go run 05-variadic-function--parametros-variados.go
+1
+2
+3
+8
