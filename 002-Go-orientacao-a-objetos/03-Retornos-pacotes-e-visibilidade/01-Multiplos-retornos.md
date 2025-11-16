@@ -125,6 +125,10 @@ Vamos salvar e executar o programa. Teremos ainda o mesmo resultado. Podemos ter
 
 
 
+---
+
+
+
 ## Dia 15/11/2025
 
 - Começando a aula com base no código da aula abaixo:
@@ -189,3 +193,20 @@ func main() {
 }
 
 ~~~~
+
+
+
+- Ajustando o código.
+- Efetuando teste:
+
+> cd /home/fernando/cursos/golang/formacao-go-alura/002-Go-orientacao-a-objetos/03-Retornos-pacotes-e-visibilidade
+> ls
+01-Multiplos-retornos.md  01-multiplos-retornos.go  go_oo-aula3
+> go run 01-multiplos-retornos.go
+500
+Saque realizado com sucesso
+100
+100
+Deposito realizado com sucesso 2100
+> date
+Sat Nov 15 22:31:53 -03 2025
