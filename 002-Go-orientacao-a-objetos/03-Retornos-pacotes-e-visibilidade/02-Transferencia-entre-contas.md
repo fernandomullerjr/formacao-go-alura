@@ -117,3 +117,91 @@ func (c *ContaCorrente) Transferir(valorDaTransferencia float64, contaDestino *C
 ```
 
 Vamos salvar, limpar o terminal e executar e dessa vez a transferência não aconteceu, pois o resultado será falso e o saldo das contas permanecerá o mesmo do início, "300" para Silvia e "100" para Gustavo.
+
+## Resumo
+
+Nesta aula, aprendemos a implementar a funcionalidade de transferência entre contas correntes em Go.
+Criação da função Transferir():
+A função recebe o valor a ser transferido (valorDaTransferencia) e a conta de destino (contaDestino) como parâmetros.
+Utilizamos um ponteiro para a ContaCorrente que chama a função, permitindo modificar o saldo da conta de origem.
+A função retorna um valor booleano (true ou false) indicando se a transferência foi bem-sucedida.
+
+
+Lógica da transferência:
+Verificamos se a conta de origem possui saldo suficiente e se o valor da transferência é maior que zero.
+Se as condições forem atendidas, subtraímos o valor da transferência do saldo da conta de origem e depositamos na conta de destino.
+Utilizamos o método Depositar para adicionar o valor à conta de destino.
+Retornamos true se a transferência for bem-sucedida, caso contrário, retornamos false.
+
+
+Correção de um erro:
+Inicialmente, a transferência não estava atualizando o saldo da conta de destino.
+Isso foi corrigido utilizando um ponteiro para a contaDestino nos parâmetros da função e ao chamar a função Transferir().
+
+
+Testes e validações:
+Testamos a função Transferir() com diferentes valores e contas para garantir que ela funcione corretamente.
+Adicionamos uma verificação para garantir que o valor da transferência seja maior que zero, evitando transferências inválidas.
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+
+## Dia 16/11/2025
+
+- Primeiro teste, não funcionou dentro do esperado:
+>
+> go run 02-transferencia-entre-contas.go
+true
+{Silvia 0 0 100}
+{Gustavo 0 0 100}
+> date
+Sun Nov 16 12:04:57 -03 2025
+
+
+O valor da conta da Silvia foi retirado, mas o conteúdo não entrou na conta de destino. O erro aconteceu porque fizemos referência para contaDaSilvia, apontamos para o conteúdo da conta que chama a função para alterar o conteúdo dela, mas não fizemos o mesmo para contaDestino.
+
+Como queremos alterar o valor dessa conta também, colocamos um asterisco na frente dela nos parâmetros da função.
+
+```go
+func (c *ContaCorrente) Transferir(valorDaTransferencia float64, contaDestino *ContaCorrente) bool {
+    if valorDaTransferencia < c.saldo {
+        c.saldo -= valorDaTransferencia 
+        contaDestino.Depositar(valorDaTransferencia)
+        return true
+    } else {
+        return false
+    }
+}
+```
+
+Porém, se salvarmos essa alteração, será apresentado um erro, e o alerta nos dirá que estamos apontando para um local desconhecido. Precisamos identificar contaDoGustavo. Conseguimos fazer isso colocando um & quando fizermos a transferência. Assim, dizemos que queremos transferir de fato para esse endereço além de termos apontado para a conta.
+
+```go
+status := contaDaSilvia.Transferir(200, &contaDoGustavo)
+```
+
+Faremos um teste, pressionaremos "Ctrl + L" e executaremos. Agora sim, a conta de Silvia que tinha "300" como saldo passará a ter "100" e a de Gustavo, "300", pois recebeu "200".
+
+
+- Ajustando o código.
+
+- Efetuando novo teste:
+
+> go run 02-transferencia-entre-contas.go
+true
+{Silvia 0 0 100}
+{Gustavo 0 0 300}
+> date
+Sun Nov 16 12:21:46 -03 2025
+
+agora trouxe o valor esperado, pegando 200 da Silvia e enviando para o Gustavo com sucesso.
