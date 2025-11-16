@@ -205,3 +205,58 @@ true
 Sun Nov 16 12:21:46 -03 2025
 
 agora trouxe o valor esperado, pegando 200 da Silvia e enviando para o Gustavo com sucesso.
+
+
+- Agora Vamos ver o que acontecerá se Gustavo tentar transferir "-200" para a conta de Silvia.
+
+```go
+status := contaDoGustavo.Transferir(-200, &contaDaSilvia)
+```
+
+>
+> go run 02-transferencia-entre-contas.go
+true
+{Silvia 0 0 500}
+{Gustavo 0 0 100}
+> date
+Sun Nov 16 12:39:35 -03 2025
+
+teve comportamento estranho
+adicionou 200 para Silvia
+
+
+Esse é um comportamento que não esperávamos.
+
+Isso significa que alem de verificar se o valor da transferência é menor do que o valor do saldo, verificaremos também se o valor da transferência é maior do que 0. As duas condições precisam ocorrer simultaneamente para que a transferência ocorra e isso seja verdade.
+
+```go
+func (c *ContaCorrente) Transferir(valorDaTransferencia float64, contaDestino *ContaCorrente) bool {
+    if valorDaTransferencia < c.saldo && valorDaTransferencia > 0 {
+        c.saldo -= valorDaTransferencia 
+        contaDestino.Depositar(valorDaTransferencia)
+        return true
+    } else {
+        return false
+    }
+}
+```
+
+- Ajustando o código
+adicionando o trecho 
+&& valorDaTransferencia > 0 
+
+- Efetuando novo teste:
+
+> go run 02-transferencia-entre-contas.go
+false
+{Silvia 0 0 300}
+{Gustavo 0 0 100}
+>
+>
+>
+> go run 02-transferencia-entre-contas.go
+false
+{Silvia 0 0 300}
+{Gustavo 0 0 100}
+> date
+Sun Nov 16 12:41:19 -03 2025
