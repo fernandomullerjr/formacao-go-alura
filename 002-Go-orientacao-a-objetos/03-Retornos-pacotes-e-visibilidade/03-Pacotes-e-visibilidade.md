@@ -172,6 +172,9 @@ Se salvarmos, teremos o mesmo resultado. Mas manteremos a escrita `contas.ContaC
 
 Nesta aula, aprendemos sobre a organização do código Go em pacotes para facilitar a manutenção e o entendimento por outros desenvolvedores.
 
+- Conteúdo na pasta:
+formacao-go-alura/002-Go-orientacao-a-objetos/03-Retornos-pacotes-e-visibilidade/go_oo-aula3
+
 Criação de Pacotes: Demonstramos como criar um pacote chamado "contas" para agrupar códigos relacionados a contas correntes.
 
 Visibilidade: Abordamos o conceito de visibilidade em Go, onde campos e funções com a primeira letra minúscula são visíveis apenas dentro do mesmo pacote, enquanto os com a primeira letra maiúscula são visíveis externamente.
