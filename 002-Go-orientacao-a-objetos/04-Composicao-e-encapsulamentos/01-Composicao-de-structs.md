@@ -50,3 +50,17 @@ Em vez de colocar todas as informações do titular diretamente na struct ContaC
 Em seguida, na struct ContaCorrente, substituímos o campo Titular (que antes era uma string) por um campo do tipo clientes.Titular. 
 Isso é o que chamamos de composição: colocar uma struct dentro de outra.
 A composição permite que a struct ContaCorrente contenha informações sobre o titular sem ter que se preocupar em armazenar e gerenciar esses dados diretamente. Isso torna o código mais organizado, fácil de entender e de manter.
+
+
+
+## Dia 22/11/2025
+
+
+>
+> go mod tidy
+go: finding module for package github.com/fernandomullerjr/formacao-go-alura/002-Go-orientacao-a-objetos/04-Composicao-e-encapsulamentos/01-composicao-de-structs/clientes
+go: downloading github.com/fernandomullerjr/formacao-go-alura v0.0.0-20251123004833-9acaaa6adfd3
+go: github.com/fernandomullerjr/formacao-go-alura/002-Go-orientacao-a-objetos/03-Retornos-pacotes-e-visibilidade/go_oo-aula3/contas imports
+        github.com/fernandomullerjr/formacao-go-alura/002-Go-orientacao-a-objetos/04-Composicao-e-encapsulamentos/01-composicao-de-structs/clientes: module github.com/fernandomullerjr/formacao-go-alura@latest found (v0.0.0-20251123004833-9acaaa6adfd3), but does not contain package github.com/fernandomullerjr/formacao-go-alura/002-Go-orientacao-a-objetos/04-Composicao-e-encapsulamentos/01-composicao-de-structs/clientes
+> date
+Sat Nov 22 22:36:30 -03 2025
