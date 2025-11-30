@@ -66,3 +66,71 @@ Vamos salvar e não veremos nenhuma mensagem de erro. Teremos exatamente o mesmo
 ```
 
 Porém, agora nosso código ficou muito mais legível para conseguirmos identificar e criar nossas estruturas.
+
+
+
+
+## Dia 29/11/2025
+
+- Testando a abordagem de leitura mais dificil:
+
+~~~~go
+package main
+
+import (
+	"fmt"
+
+	"github.com/fernandomullerjr/formacao-go-alura/002-Go-orientacao-a-objetos/04-Composicao-e-encapsulamentos/02-Tipos-aninhados-codigo/clientes"
+	"github.com/fernandomullerjr/formacao-go-alura/002-Go-orientacao-a-objetos/04-Composicao-e-encapsulamentos/02-Tipos-aninhados-codigo/contas"
+)
+
+func main() {
+	contaDoBruno := contas.ContaCorrente{Titular: clientes.Titular{
+		Nome:      "Bruno",
+		CPF:       "123.111.123.12",
+		Profissao: "Desenvolvedor"},
+		NumeroAgencia: 123, NumeroConta: 123456, Saldo: 100}
+
+	fmt.Println(contaDoBruno)
+}
+~~~~
+
+
+- Resultado:
+
+>
+> go run main.go
+{{Bruno 123.111.123.12 Desenvolvedor} 123 123456 100}
+> date
+Sat Nov 29 21:49:03 -03 2025
+
+
+
+- Testando a abordagem que deixa mais legivel o código, bem melhor:
+
+~~~~go
+package main
+
+import (
+	"fmt"
+
+	"github.com/fernandomullerjr/formacao-go-alura/002-Go-orientacao-a-objetos/04-Composicao-e-encapsulamentos/02-Tipos-aninhados-codigo/clientes"
+	"github.com/fernandomullerjr/formacao-go-alura/002-Go-orientacao-a-objetos/04-Composicao-e-encapsulamentos/02-Tipos-aninhados-codigo/contas"
+)
+
+func main() {
+	clienteBruno := clientes.Titular{"Bruno", "123.123.123.12", "Desenvolvedor"}
+	contaDoBruno := contas.ContaCorrente{clienteBruno, 123, 123456, 100}
+	fmt.Println(contaDoBruno)
+}
+
+~~~~
+
+- Resultado:
+
+>
+> go run main.go
+{{Bruno 123.123.123.12 Desenvolvedor} 123 123456 100}
+>
+> date
+Sat Nov 29 21:50:03 -03 2025
