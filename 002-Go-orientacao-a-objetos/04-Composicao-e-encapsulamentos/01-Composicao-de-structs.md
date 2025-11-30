@@ -64,3 +64,57 @@ go: github.com/fernandomullerjr/formacao-go-alura/002-Go-orientacao-a-objetos/03
         github.com/fernandomullerjr/formacao-go-alura/002-Go-orientacao-a-objetos/04-Composicao-e-encapsulamentos/01-composicao-de-structs/clientes: module github.com/fernandomullerjr/formacao-go-alura@latest found (v0.0.0-20251123004833-9acaaa6adfd3), but does not contain package github.com/fernandomullerjr/formacao-go-alura/002-Go-orientacao-a-objetos/04-Composicao-e-encapsulamentos/01-composicao-de-structs/clientes
 > date
 Sat Nov 22 22:36:30 -03 2025
+
+
+
+
+> go run main.go
+# command-line-arguments
+./main.go:10:49: cannot use "Silvia" (untyped string constant) as clientes.Titular value in struct literal
+./main.go:11:50: cannot use "Gustavo" (untyped string constant) as clientes.Titular value in struct literal
+> date
+Sat Nov 29 21:11:29 -03 2025
+
+
+
+The error indicates that the `Titular` field in your `ContaCorrente` struct expects a `clientes.Titular` type, not a string. You need to create `Titular` instances from the `clientes` package.
+
+Here's how to fix your main.go:
+
+````go
+package main
+
+import (
+	"fmt"
+
+	"github.com/fernandomullerjr/formacao-go-alura/002-Go-orientacao-a-objetos/04-Composicao-e-encapsulamentos/01-composicao-de-structs/clientes"
+	"github.com/fernandomullerjr/formacao-go-alura/002-Go-orientacao-a-objetos/04-Composicao-e-encapsulamentos/01-composicao-de-structs/contas"
+)
+
+func main() {
+	clienteSilvia := clientes.Titular{Nome: "Silvia", CPF: "123.456.789-00", Profissao: "Desenvolvedora"}
+	clienteGustavo := clientes.Titular{Nome: "Gustavo", CPF: "987.654.321-00", Profissao: "Analista"}
+
+	contaDaSilvia := contas.ContaCorrente{Titular: clienteSilvia, Saldo: 300}
+	contaDoGustavo := contas.ContaCorrente{Titular: clienteGustavo, Saldo: 100}
+
+	status := contaDoGustavo.Tranferir(-200, &contaDaSilvia)
+
+	fmt.Println(status)
+	fmt.Println(contaDaSilvia)
+	fmt.Println(contaDoGustavo)
+}
+````
+
+This creates `Titular` instances with the required fields (adjust the field names based on your `clientes.Titular` struct definition) and uses them in the `ContaCorrente` struct literals.
+
+
+
+- Código Ajustado, efetuando teste:
+
+> go run main.go
+false
+{{Silvia 123.456.789-00 Desenvolvedora} 0 0 300}
+{{Gustavo 987.654.321-00 Analista} 0 0 100}
+> date
+Sat Nov 29 21:13:51 -03 2025

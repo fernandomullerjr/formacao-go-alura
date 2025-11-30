@@ -1,3 +1,3 @@
-module github.com/fernandomullerjr/formacao-go-alura/002-Go-orientacao-a-objetos/03-Retornos-pacotes-e-visibilidade/go_oo-aula3
+module github.com/fernandomullerjr/formacao-go-alura/002-Go-orientacao-a-objetos/04-Composicao-e-encapsulamentos/01-composicao-de-structs
 
-go 1.24.4
+go 1.21
